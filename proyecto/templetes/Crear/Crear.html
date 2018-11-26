@@ -1,0 +1,33 @@
+{%extends 'Plantilla_principal.html' %}
+{%block Contenido_pagina%}
+
+<form method="post">
+{% csrf_token %}
+
+  <div class="alert {{ message.tags }}  alert-dismissible alert-warning" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+      <p class="display-4" align="center">Errores en el formato</p>
+    {% for message in messages %}
+    {{ message }}
+       {% endfor %}
+  </div>
+
+<div  class="jumbotron" align="left" >
+
+  {{form.as_p}}
+{% if form.errors %}
+  <ul>
+    {% for error in form.errors %}
+      <li>{{ error }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+</div>
+
+
+<button type="submit">Guardar</button>
+</form>
+
+{%endblock%}
