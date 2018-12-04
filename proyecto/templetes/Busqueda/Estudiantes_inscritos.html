@@ -3,17 +3,18 @@
 
 
 {% csrf_token %}
+
 <table class="table table-hover" id="mostrar elementos">
     <thead class="table-light">
         <tr>
         <td>
-            Nombre del docente
+            Nombre  Del Estudiante
         </td>
         <td>
-            Apellido del Docente
+            Apellido del estudiante
         </td>
         <td>
-            Cedula
+
         </td>
           <td>
               Contraseña
@@ -23,36 +24,35 @@
           </td>
     </tr>
     </thead>
-<tbody >
-{%if docentes_mostrar %}
-{%for docentes in docentes_mostrar %}
+<tbody class="table-light">
+{%if Materia_listar %}
+{%for docentes in Materia_listar%}
 <tr>
 
     <td>
-           {{docentes.nombre_doc}}
+           {{docentes_mostrar.nombre_doc}}
     </td>
     <td>
-           {{docentes.apellido_doc}}
+           {{docentes_mostrar.apellido_doc}}
     </td>
     <td>
-           {{docentes.cedula}}
+           {{docentes_mostrar.cedula}}
     </td>
     <td>
-           {{docentes.contraseña}}
+           {{docentes_mostrar.contraseña}}
     </td>
     <td>
-           {{docentes.celular}}
+           {{docentes_mostrar.celular}}
     </td>
     <td>
-        <a class="btn btn-primary btn-lg" href="{%url 'actualizar-docentes' docentes.cedula  %}" >Actualizar </a>
+        <a class="btn btn-primary btn-lg" href="{%url 'actualizar-docentes' docentes.cedula  %}" >Learn more</a>
     </td>
 </tr>
 {%endfor%}
-{%else%}
-<p>Error no leido</p>
 {%endif%}
 </tbody>
 
 </table>
+
 
 {%endblock%}

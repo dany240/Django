@@ -4,6 +4,7 @@
 from Crypto.Cipher import AES  # pip install pycrypto
 import base64
 
+
 def __Contraseña(LLavePrivada, Mensajeaencriptar, encrypt=True):
     # an AES key must be either 16, 24, or 32 bytes long
     # in this case we make sure the key is 32 bytes long by adding padding and/or slicing if necessary

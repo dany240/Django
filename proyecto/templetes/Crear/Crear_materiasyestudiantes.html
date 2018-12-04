@@ -1,18 +1,54 @@
 {%extends 'Plantilla_principal.html' %}
+
+
+{%block  Cabezera%}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#Agregar").click(function(){
+            alert("PASO EL IF");
+
+        });
+    });
+</script>
+
+{%endblock%}
 {%block Contenido_pagina%}
 
 <form method="post">
 {% csrf_token %}
-    <table>
-        <tr>
-            <td>Materias</td>
-            <td>Estudiantes</td>
+
+    <table id="tabla" class="table table-hover">
+        <thead>
+           <tr class="table-light">
+            <td>
+             Materia 
+             </td>
+            <td>
+            {{ form.cod_materia }}
+            </td>  
+            <td>
+            Semestre  
+            </td>
+            <td>
+            {{ form.id_semestre }}
+            </td> 
         </tr>
-        <tr>
-            <td>{{form.as_p}}</td>
-        </tr>
+        </thead>
+    	<tbody>
+            <tr>
+            <td>
+            <label>El codigo de estudio es  </label>
+
+            {{ form.cod_estudio }}   
+            </td>
+
+
+            </tr>
+    	</tbody>
+       
     </table>
 <button type="submit">Guardar</button>
+<input type ="button"id="Agregar"value="Agregar Personal">
 </form>
 
-{%endblock%}l>
+{%endblock%}

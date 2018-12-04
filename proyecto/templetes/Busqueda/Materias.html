@@ -7,19 +7,19 @@
     <thead class="table-light">
         <tr>
         <td>
-            Nombre del docente
+           Codigo
         </td>
         <td>
-            Apellido del Docente
+            Nombre de la materia
         </td>
         <td>
-            Cedula
+            Creditos
         </td>
           <td>
-              Contraseña
+              Semestre
           </td>
           <td>
-              celular
+              Activa
           </td>
     </tr>
     </thead>
@@ -29,19 +29,19 @@
 <tr>
 
     <td>
-           {{docentes.nombre_doc}}
+           {{docentes.cod_materia}}
     </td>
     <td>
-           {{docentes.apellido_doc}}
+           {{docentes.nombre_materia}}
     </td>
     <td>
-           {{docentes.cedula}}
+           {{docentes.creditos}}
     </td>
     <td>
-           {{docentes.contraseña}}
+           {{docentes.semestre_id}}
     </td>
     <td>
-           {{docentes.celular}}
+           {{docentes.activo}}
     </td>
     <td>
         <a class="btn btn-primary btn-lg" href="{%url 'actualizar-docentes' docentes.cedula  %}" >Actualizar </a>

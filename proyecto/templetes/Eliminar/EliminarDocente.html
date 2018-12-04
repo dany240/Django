@@ -1,0 +1,22 @@
+{%extends 'Plantilla_principal.html' %}
+{%block Contenido_pagina%}
+
+<form method="post">
+{% csrf_token %}
+<div  class="jumbotron" align="left" >
+
+
+{%block Registro%}
+
+    <h1 style="align=center">Desea Desactivar el Sigueinte Docente </h1>
+    	<br> 
+    	
+    <p>{{form.as_p}}</p>
+{%endblock%}
+
+
+<button class="btn btn-success" type="submit">Guardar</button>
+</div>
+</form>
+
+{%endblock%}

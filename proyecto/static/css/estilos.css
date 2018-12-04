@@ -12,3 +12,9 @@
   width: all;
   border-color: #FFFFFF
 }
+div[class *= 'alert'] {
+	margin-bottom: 15px;
+	margin-left:  all;
+	max-height: 40px;
+	margin-top: 15px;
+}

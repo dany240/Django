@@ -1,11 +1,12 @@
 
 from django import forms
 from django.contrib.auth.admin import UserAdmin
-from Basededatos.Universidad.models import Estudiante,Materia,Docentes,Estudianteysemestre,Materiayestudiantes,DocentesEnSemestre,Notas
+from .models import Estudiante,Materia,Docentes,Estudianteysemestre,Materiayestudiantes,DocentesEnSemestre,Notas
 
 #manipulacion de docentes
 class Formas_entrada_Docentes(forms.ModelForm):
     class Meta:
+
         model= Docentes
         fields=[
             'cedula',
@@ -50,7 +51,7 @@ class Formas_entrada_Estudiante(forms.ModelForm):
 
         'nombre_est': forms.TextInput( attrs={'class':'form-control'}),
         'apellido_est':forms.TextInput( attrs={'class':'form-control'}),
-        'quesemestre':forms.CheckboxSelectMultiple(attrs={'class':'form-control'})
+        'quesemestre':forms.NumberInput(attrs={'class':'form-control'})
         }
 #formas para entrada de materias
 class Fromas_entradaMaterias(forms.ModelForm):
