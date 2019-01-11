@@ -2,16 +2,10 @@
 
 
 {%block  Cabezera%}
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("#Agregar").click(function(){
-            alert("PASO EL IF");
 
-        });
-    });
-</script>
 
 {%endblock%}
+
 {%block Contenido_pagina%}
 
 <form method="post">
@@ -20,30 +14,18 @@
     <table id="tabla" class="table table-hover">
         <thead>
            <tr class="table-light">
-            <td>
-             Materia 
-             </td>
-            <td>
-            {{ form.cod_materia }}
-            </td>  
-            <td>
-            Semestre  
-            </td>
-            <td>
-            {{ form.id_semestre }}
-            </td> 
+
+               <select name="cod_materia" >
+                   {%for mat in Materia%}
+                   {%if mat.activo%}
+                   <option value="{{mat.cod_materia}}" >{{mat.nombre_materia}}</option>
+                   {%endif%}
+                   {%endfor%}
+               </select>
+               {{estysem.id_semestre}}
         </tr>
         </thead>
     	<tbody>
-            <tr>
-            <td>
-            <label>El codigo de estudio es  </label>
-
-            {{ form.cod_estudio }}   
-            </td>
-
-
-            </tr>
     	</tbody>
        
     </table>

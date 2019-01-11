@@ -1,0 +1,57 @@
+{%extends 'Plantilla_principal.html' %}
+
+
+{%block  Cabezera%}
+{% load tags_separacion %}
+
+{%endblock%}
+{%block Contenido_pagina%}
+
+<form method="post">
+{% csrf_token %}
+
+    <table id="tabla" class="table table-hover" align="center">
+        <thead>
+           <tr class="table-light">
+            <td>
+           <h4>Semestre</h4>
+             </td>
+            <td>
+             {{ Semestre}}
+            </td>  
+            <td>
+            <h4>Materia  </h4>
+            </td>
+            <td>
+            {{ materia }}
+            </td> 
+        </tr>
+        </thead>
+    	<tbody>
+            <tr>
+            <td align="left">
+
+            <label>El codigo de estudio es  </label>
+            </td>
+             <td align="center">
+            <select class=""   name="cod_estudio" >
+             <option value="">---------------</option>
+             {%for Estudiante in Estudiantes%}
+             {%if Estudiante.cod_estudio not in excluir%}
+              <option value="{{Estudiante.cod_estudio}}"> codigo: {{Estudiante.cod_estudio}}  '__'Nombre y apellido'____  '  {{Estudiante.cod_estudio|nomEstud}}  </option>
+
+              {%endif%}
+            {%endfor%}
+             </select>
+
+            </td>
+               <td align="left"> <button type="submit">Guardar</button></td>
+            </tr>
+
+    	</tbody>
+       
+    </table>
+
+ </form>
+
+{%endblock%}

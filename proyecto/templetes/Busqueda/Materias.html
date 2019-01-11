@@ -24,27 +24,27 @@
     </tr>
     </thead>
 <tbody >
-{%if docentes_mostrar %}
-{%for docentes in docentes_mostrar %}
+{%if Materia_listar %}
+{%for mat in Materia_listar %}
 <tr>
 
     <td>
-           {{docentes.cod_materia}}
+           {{mat.cod_materia}}
     </td>
     <td>
-           {{docentes.nombre_materia}}
+           {{mat.nombre_materia}}
     </td>
     <td>
-           {{docentes.creditos}}
+           {{mat.creditos}}
     </td>
     <td>
-           {{docentes.semestre_id}}
+           {{mat.semestre_id}}
     </td>
     <td>
-           {{docentes.activo}}
+           {{mat.activo}}
     </td>
     <td>
-        <a class="btn btn-primary btn-lg" href="{%url 'actualizar-docentes' docentes.cedula  %}" >Actualizar </a>
+        <a class="btn btn-primary btn-lg" href="{%url 'ActMateria' mat.cod_materia  %}" >Actualizar </a>
     </td>
 </tr>
 {%endfor%}

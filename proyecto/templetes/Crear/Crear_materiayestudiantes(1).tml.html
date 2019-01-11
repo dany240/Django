@@ -4,9 +4,11 @@
 {%block  Cabezera%}
 <script type="text/javascript">
     $(document).ready(function(){
+
         $("#Agregar").click(function(){
                      var fila= '<tr> <td>{%default_estudiantes%}</td></tr>';
-                     var mostrar= [];
+                     var dato= [];
+                     $("#tabla").append(fila);
 
                      $.ajax({
                               type: "POST",
@@ -14,7 +16,7 @@
                               dataType: "json",
                               data: {"table": JSON.stringify(Recolectar_datos())},
                               success: function(data){
-                              $('#tabla').append(data.toString())
+
                                 }
 
                            });
@@ -60,21 +62,8 @@
             </td> 
         </tr>
         </thead>
-
-    	<tbody>
-
-            <tr>
-                <td>
-                     <label>El codigo de estudio es  </label>
-                </td>
-
-    	</tbody>
     </table>
 
-<button type="submit">Guardar</button>
-#<input type ="button"id="Agregar"value="Agregar Personal">
-#<input type ="button"id="Agregar1"value="Probar" >
-</form>
- 
+<button type="submit">Acceder</button>
 
-{%endblock%}
+</form>

@@ -8,42 +8,44 @@
     <thead class="table-light">
         <tr>
         <td>
-           Codigo
+            Nombre  Del Estudiante
         </td>
         <td>
-              Nombre  Del Estudiante
+            Apellido del estudiante
         </td>
         <td>
-                        Apellido del estudiante
 
         </td>
           <td>
-               apellido del estudiante
+              Contraseña
           </td>
           <td>
-              Semestre que cursa
+              celular
           </td>
     </tr>
     </thead>
 <tbody class="table-light">
-{%if estudiantes_listar %}
-{%for estudiantes in estudiantes_listar%}
+{%if Materia_listar %}
+{%for docentes in Materia_listar%}
 <tr>
 
     <td>
-           {{estudiantes.cod_estudio}}
+           {{docentes_mostrar.nombre_doc}}
     </td>
     <td>
-           {{estudiantes.nombre_est}}
+           {{docentes_mostrar.apellido_doc}}
     </td>
     <td>
-           {{estudiantes.apellido_est}}
+           {{docentes_mostrar.cedula}}
     </td>
     <td>
-           {{estudiantes.quesemestre}}
+           {{docentes_mostrar.contraseña}}
     </td>
     <td>
-        <a class="btn btn-primary btn-lg" href="{%url 'actualizar-docentes' estudiantes.cod_estudio  %}" >Learn more</a>
+           {{docentes_mostrar.celular}}
+    </td>
+    <td>
+        <a class="btn btn-primary btn-lg" href="{%url 'actualizar-docentes' docentes.cedula  %}" >Learn more</a>
     </td>
 </tr>
 {%endfor%}
