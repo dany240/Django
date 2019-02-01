@@ -10,7 +10,7 @@ from datetime import timezone
 import psycopg2
 from django.core.validators import *
 from django.db import models,connection
-from django.db import models
+
 
 
 from django.db import models
@@ -116,6 +116,7 @@ class Materia(models.Model):
     def __str__(self):
         return '{}'.format(str(self.nombre_materia))
 
+
     class Meta:
         managed = False
         db_table = 'materia'
@@ -148,6 +149,12 @@ class Estudianteysemestre(models.Model):
     @staticmethod
     def Str(id_semestre:int,cod_estudio:int):
         return '{}  {} '.format(Semestre.Str(id_semestre.id_semestre),Estudiante.Str(cod_estudio.cod_estudio))
+    @staticmethod
+    def Str_id_semestre(id_semestre:int):
+        return '{}'.format(Semestre.Str(id_semestre))
+    @staticmethod
+    def Str_cod_estudio(cod_estudio):
+        return '{}'.format(Estudiante.Str(cod_estudio))
     class Meta:
         managed = False
         db_table = 'estudianteysemestre'

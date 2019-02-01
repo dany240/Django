@@ -1,5 +1,41 @@
  {%extends 'Plantilla_principal.html' %}
+
+{%block Cabezera%}
+ <script>
+         var enviar_datos;
+    $(document).ready(function(){
+
+    var tabla=
+
+    });
+ </script>
+
+{% endblock %}
 {%block Contenido_pagina%}
 
+ <form method="post">
+     {% csrf_token %}
 
- {%enblock%}
+    {{form}}
+     <button class="btn btn-success" type="submit">Guardar</button>
+    {%if notas_inscritas%}
+     <table>
+         <thead>
+         <th>
+             Tipo de notas</th>
+         <th>Porcentaje</th>
+         </thead>
+    {%for var in notas_inscritas%}
+        <tr>
+            <td>{{var.tipodenotas}}</td>
+            <td>{{var.porcentaje}}</td>
+        </tr>
+
+     {%endfor%}
+
+     </table>
+
+    {%endif%}
+ </form>
+
+ {%endblock%}

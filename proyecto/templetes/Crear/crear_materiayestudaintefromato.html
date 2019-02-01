@@ -6,7 +6,9 @@
 
 {%endblock%}
 {%block Contenido_pagina%}
-
+    {% for message in messages %}
+    {{ message }}
+       {% endfor %}
 <form method="post">
 {% csrf_token %}
 

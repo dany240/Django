@@ -140,7 +140,8 @@ class Formas_entrada_Notas(forms.ModelForm):
             'id_semestre',
             'cedula_doc',
             'tipodenota',
-            'notas'
+            'notas',
+            'porcentaje',
         ]
         labels={
             'cod_materia': 'Codigo De Materia',
@@ -158,7 +159,7 @@ class Formas_entrada_Notas(forms.ModelForm):
             'cod_estudio': forms.Select(attrs={'class':'form-control'}),
             'id_semestre': forms.Select(attrs={'class':'form-control'}),
             'cedula_doc':  forms.Select(attrs={'class':'form-control'}),
-            'tipodenota':  forms.NumberInput(attrs={'class':'form-control'}),
+            'tipodenota':  forms.TextInput(attrs={'class':'form-control'}),
             'porcentaje': forms.NumberInput(attrs={'class':'form-control', 'min':'0','max':'100'}),
             'notas': forms.NumberInput(attrs={'class':'form-control','min':'0','max':'5'})
         }

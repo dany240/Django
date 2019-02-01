@@ -21,8 +21,8 @@ urlpatterns = [
     url(r'^InscribirEstudoiantesmateria$',views.prueba2,name='prueba'),
     url(r'^prueba2$', views.CrearyusarMateriayestudiante, name='prueba2'),
     url(r'^prueba$',views.Prueba,name='prueba-notas'),
-    url(r'^Peticionesajax$',views.procesarjson_procesar,name='json_pruebas')
-
+    url(r'^Peticionesajax$',views.procesarjson_procesar,name='json_pruebas'),
+    url(r'^CrearNotas$',views.Crear_notas_tipo,name='notas_tipo')
 ]
 
 """

@@ -1,5 +1,5 @@
 from django import template
-
+from django import forms
 from Basededatos.Universidad.models import Estudianteysemestre,Docentes,Estudiante
 from django.core.serializers import json
 from django.utils.safestring import mark_safe
@@ -37,3 +37,7 @@ def SacarnombresEstudiantes(cod_estudio:int):
         return ' N '+str(Estudiante.Str(cod_estudio))
     else :
         return 'Error en los datos'
+@register.filter(name='imprimir')
+def imprimir(request:forms):
+    print(request)
+    return  request

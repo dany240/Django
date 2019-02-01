@@ -20,4 +20,5 @@ from django.conf.urls import url,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     url('',include('Basededatos.Universidad.urls'),name="Universidad"),
+    url('prueba/',include('pp1.urls'),name='prueba')
 ]

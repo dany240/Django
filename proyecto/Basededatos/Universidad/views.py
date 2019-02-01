@@ -209,8 +209,22 @@ def Crear_Materiayestudiantes(request:HttpRequest):#metodo encargado de decir la
 
 def Crear_Materiayestudiantes2(request:HttpRequest,id_semestre,cod_materia):
     #metodo encargado de decir la
+    datosYaexistentes = Materiayestudiantes.objects.all().values('cod_estudio')
+    formato = Estudianteysemestre.objects.filter(id_semestre=id_semestre).order_by('id_semestre').values(
+        'cod_estudio')  # type: []
+    excluir = []
+    if (datosYaexistentes):
+        for val in datosYaexistentes:
+            excluir.append(val['cod_estudio'])
+    excluir = tuple(excluir)
+    print(excluir)
+    id_semestre1 = Semestre.objects.filter(id_semestre=id_semestre)[0]  # type: Semestre
+    cod_materia1 = Materia.objects.filter(cod_materia=cod_materia)[0]
+    context = {'Estudiantes': formato, 'Semestre': id_semestre1, 'materia': cod_materia1, 'excluir': excluir}
     if(request.method=="POST"):
-        cod_estudio= (request.POST.getlist('cod_estudio')[0])
+
+      cod_estudio= (request.POST.getlist('cod_estudio')[0])
+      if(cod_estudio!=''):
         print(str(cod_estudio)+'--------------------------------')
         Coneccion = connection
         dato = Coneccion.cursor()
@@ -222,19 +236,8 @@ def Crear_Materiayestudiantes2(request:HttpRequest,id_semestre,cod_materia):
         Coneccion.close()
 
         return  redirect('index')
-
-    else:
-        datosYaexistentes=Materiayestudiantes.objects.all().values('cod_estudio')
-        formato=Estudianteysemestre.objects.filter(id_semestre=id_semestre).order_by('id_semestre').values('cod_estudio') #type: []
-        excluir=[]
-        if(datosYaexistentes):
-         for val in datosYaexistentes:
-             excluir.append(val['cod_estudio'])
-        excluir=tuple(excluir)
-        print(excluir)
-        id_semestre1=Semestre.objects.filter(id_semestre=id_semestre)[0] #type: Semestre
-        cod_materia1=Materia.objects.filter(cod_materia=cod_materia)[0]
-        context={'Estudiantes':formato,'Semestre':id_semestre1,'materia':cod_materia1,'excluir':excluir}
+      else:
+         messages.error(request,'Error no existen datos')
 
 
     return render(request,'Crear/crear_materiayestudaintefromato.html',context)
@@ -288,6 +291,9 @@ def CrearyusarMateriayestudiante(request:HttpRequest,dato):
 def Crear_Notas(request):
     if request.method == 'POST':
         form=Formas_entrada_Notas(request.POST)
+        form=Formas_entrada_Notas(
+            
+        )
         if(form.is_valid()):
             print(str(form.cleaned_data)+"---------------------------------")
             form.save()
@@ -307,10 +313,38 @@ def Crear_Notas(request):
          context={}
     return render(request,'Crear/Crear.html',{'form':form})
 
+def Crear_notas_tipo(request:HttpRequest):
+    if(request.method=='POST'):
+        n=Formas_entrada_Notas(request.POST)
+
+    else:
+        print()
+        form=Formas_entrada_Notas()
+        materiayseme=Materiayestudiantes.objects.all() #type:Materiayestudiantes
+        materia=[]
+        semestre=[]
+        estudiante=[]
+        profesorensemestre=DocentesEnSemestre.objects.all()
+
+        for recorrer in materiayseme:
+            materia.append(recorrer.cod_materia)
+
+
+        return render(request,'Crear/Crear_notas.html',{'form':form})
+
 def Listar_Notas(request):
-        notas = Notas.objects.all().order_by('cod_materia') #type: Notas
+     """
+     
+     :param request: 
+     :return render:
+
+  notas = Notas.objects.all().order_by('cod_materia') #type: Notas
         contexto = {'Materia_listar': Notas}#type: context
         return  render(request,'',contexto)
+
+"""
+     pass
+
 
 
 def Actualizar_Notas(request):
@@ -326,7 +360,7 @@ def Eliminar_Notas(request):
 
 
 
-def Validar_existencia_multiple(Tabla,Fila,Valor) -> (bool):
+def Validar_existencia_multiple(Tabla,Fila:[],Valor:[]) -> (bool):
     dato = connection.cursor()
     Stringparamentro='select * from '+str(Tabla)+' where '+str(Fila)+' = %s'
     dato.execute(Stringparamentro,[str(Valor)] )
